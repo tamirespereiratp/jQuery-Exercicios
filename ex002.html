@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 03 - Exercicio 02</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <h1>Nessa página a função do botão direito do mouse não funciona!</h1>
+
+    <script>
+        $(document).ready(function(){
+          $(document).on("contextmenu", function(e){
+            // Impede o menu de contexto ao clicar com o botão direito
+            e.preventDefault();
+          });
+        });
+      </script>
+</body>
+</html>

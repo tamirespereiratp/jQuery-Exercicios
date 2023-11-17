@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 03 - Exercicio 04</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        #timer {
+            font-size: 2em;
+            margin: 20px;
+        }
+    
+        button {
+            font-size: 1em;
+            margin: 0 5px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="timer">00:00:00</div>
+    <button id="start">Iniciar</button>
+    <button id="pause">Pausar</button>
+    <button id="resume">Resumir</button>
+    <button id="reset">Resetar</button>
+
+    <script>
+        $(document).ready(function(){
+            var timerInterval;
+            var seconds = 0;
+            var isRunning = false;
+
+            $("#start").click(function(){
+                if (!isRunning) {
+                    isRunning = true;
+                    timerInterval = setInterval(updateTimer, 1000);
+                }
+            });
+
+            $("#pause").click(function(){
+                clearInterval(timerInterval);
+                isRunning = false;
+            });
+
+            $("#resume").click(function(){
+                if (!isRunning) {
+                    isRunning = true;
+                    timerInterval = setInterval(updateTimer, 1000);
+                }
+            });
+
+            $("#reset").click(function(){
+                clearInterval(timerInterval);
+                isRunning = false;
+                seconds = 0;
+                updateTimer();
+            });
+
+            function updateTimer() {
+                var hours = Math.floor(seconds / 3600);
+                var minutes = Math.floor((seconds % 3600) / 60);
+                var remainingSeconds = seconds % 60;
+
+                $("#timer").text(
+                    padNumber(hours) + ":" +
+                    padNumber(minutes) + ":" +
+                    padNumber(remainingSeconds)
+                );
+
+                seconds++;
+            }
+
+            function padNumber(number) {
+                return (number < 10 ? "0" : "") + number;
+            }
+        });
+    </script>
+</body>
+</html>

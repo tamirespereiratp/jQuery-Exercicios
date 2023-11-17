@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula 03 - Exercicio 03</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        #counter {
+            font-size: 24px;
+            margin: 20px;
+        }
+    
+        button {
+            background-color: rgb(0, 68, 255);
+            font-size: 18px;
+            margin: 0 5px;
+            width: 40px;
+        }
+        body {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <button id="increment">+</button>
+    <div id="counter">0</div>
+    <button id="decrement">-</button>
+
+    <script>
+        $(document).ready(function(){
+            var counterValue = 0;
+      
+          $("#increment").click(function(){
+            counterValue++;
+            updateCounter();
+          });
+      
+          $("#decrement").click(function(){
+            if (counterValue > 0) {
+                counterValue--;
+                updateCounter();
+            }
+          });
+      
+          function updateCounter() {
+            $("#counter").text(counterValue);
+          }
+        });
+      </script>
+</body>
+</html>
